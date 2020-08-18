@@ -1,6 +1,6 @@
 {
   "name": "atom-modal-views",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "NPM Package Template",
   "main": "src/index.js",
   "scripts": {
