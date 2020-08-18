@@ -1,16 +1,16 @@
 {
-  "name": "npm-package-template",
+  "name": "atom-modal-views",
   "version": "0.1.0",
   "description": "NPM Package Template",
   "main": "src/index.js",
   "scripts": {
-    "test": "jest --verbose",
-    "test:cover": "jest --coverage",
+    "test": "atom --test ./spec",
     "lint": "eslint ."
   },
+  "atomTestRunner": "./spec/runner",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/UziTech/npm-package-template.git"
+    "url": "git+https://github.com/UziTech/atom-modal-views.git"
   },
   "keywords": [
     "emmet",
@@ -20,10 +20,13 @@
   "author": "Tony Brix <Tony@Brix.ninja> (https://Tony.Brix.ninja)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/UziTech/npm-package-template/issues"
+    "url": "https://github.com/UziTech/atom-modal-views/issues"
   },
-  "homepage": "https://github.com/UziTech/npm-package-template#readme",
-  "dependencies": {},
+  "homepage": "https://github.com/UziTech/atom-modal-views#readme",
+  "dependencies": {
+    "etch": "^0.14.0",
+    "marked": "^1.1.1"
+  },
   "devDependencies": {
     "@semantic-release/changelog": "^5.0.1",
     "@semantic-release/commit-analyzer": "^8.0.1",
@@ -31,8 +34,9 @@
     "@semantic-release/github": "^7.0.7",
     "@semantic-release/npm": "^7.0.5",
     "@semantic-release/release-notes-generator": "^9.0.1",
-    "eslint": "^7.1.0",
-    "jest-cli": "^26.0.1",
-    "semantic-release": "^17.0.8"
+    "atom-jasmine3-test-runner": "^5.0.5",
+    "eslint": "^7.7.0",
+    "eslint-plugin-react": "^7.20.6",
+    "semantic-release": "^17.1.1"
   }
 }

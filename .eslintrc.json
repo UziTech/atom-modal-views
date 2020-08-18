@@ -3,16 +3,28 @@
 		"browser": true,
 		"node": true,
 		"es6": true,
-		"jest": true
+		"jasmine": true
+	},
+	"plugins": [
+		"react"
+	],
+	"settings": {
+		"react": {
+			"version": "16"
+		}
 	},
 	"parserOptions": {
 		"sourceType": "module",
 		"ecmaVersion": 2018,
 		"ecmaFeatures": {
+			"jsx": true,
 			"impliedStrict": true
 		}
 	},
 	"extends": "eslint:recommended",
+	"globals": {
+		"atom": "readonly"
+	},
 	"rules": {
 		"valid-jsdoc": 1,
 
@@ -77,6 +89,11 @@
 		"prefer-spread": 1,
 		"prefer-template": 2,
 		"rest-spread-spacing": 2,
-		"template-curly-spacing": 2
+		"template-curly-spacing": 2,
+
+		"react/jsx-uses-react": "error",
+		"react/jsx-uses-vars": "error",
+		"react/jsx-indent": ["error", "tab"],
+		"react/jsx-no-bind": "error"
 	}
 }
