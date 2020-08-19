@@ -18,8 +18,17 @@ const inputView = new InputView({
 	title: "Title text",
 	description: "Description can use **markdown**",
 	placeholder: "placeholder text",
-	value: "value text",
+	value: "initial value",
 });
 
 const value = await inputView.getInput();
 ```
+
+### Options
+
+| Name        | Default | Description                                  |
+|:------------|:-------:|:---------------------------------------------|
+| title       |   `""`  | Title inside `<h1>` tag                      |
+| description |   `""`  | Description can contain markdown             |
+| placeholder |   `""`  | Placeholder text to show when input is empty |
+| value       |   `""`  | The initial value                            |
