@@ -5,27 +5,29 @@ const { CompositeDisposable, TextEditor } = require("atom");
 const marked = require("marked");
 const etch = require("etch");
 
-const renderer = new marked.Renderer();
-renderer.code = () => "";
-renderer.blockquote = () => "";
-renderer.heading = () => "";
-renderer.html = () => "";
-renderer.image = () => "";
-renderer.list = () => "";
-
 let oldView;
 
 function markedCache(md) {
+	// eslint-disable-next-line eqeqeq
+	md = (md == null ? "" : String(md));
+
 	if (!this.cache) {
 		this.cache = {};
 	}
-	if (md) {
-		if (!this.cache[md]) {
-			this.cache[md] = marked(md, { renderer }).replace(/<p>(.*)<\/p>/, "$1").trim();
-		}
-		return this.cache[md];
+
+	if (!this.cache[md]) {
+		this.cache[md] = marked(md).trim();
 	}
+
+	return this.cache[md];
 }
+
+const defaults = {
+	title: "",
+	description: "",
+	placeholder: "",
+	value: "",
+};
 
 module.exports = class InputView {
 	constructor(props = {}) {
@@ -34,25 +36,29 @@ module.exports = class InputView {
 		}
 		oldView = this;
 
-		this.props = { ...props };
+		this.props = { ...defaults, ...props };
 
 		etch.initialize(this);
 
+		this.renderPromise = Promise.resolve();
+
+		this.element.addEventListener("focusout", (e) => this.didChangeFocus(e));
+
 		this.editor = this.refs.editor;
-		const editorElement = this.editor.getElement();
-		this.updateText();
-		for (const element of [this.element, ...this.element.querySelectorAll("*")]) {
-			element.addEventListener("blur", (e) => this.didChangeFocus(e));
+		if (this.props.value) {
+			this.editor.setText(this.props.value);
+			this.editor.selectAll();
 		}
 
 		this.panel = atom.workspace.addModalPanel({ item: this, autoFocus: true });
-		this.editor.selectAll();
 
+		const editorElement = atom.views.getView(this.editor);
 		this.disposables = new CompositeDisposable();
 		this.disposables.add(
+			this.editor.onDidStopChanging(() => this.didChangeValue()),
 			atom.commands.add(editorElement, "core:cancel", () => this.destroy()),
 			atom.commands.add(editorElement, "core:confirm", () => this.confirm()),
-			this.panel.onDidChangeVisible(v => this.didChangeVisibility(v)),
+			this.panel.onDidChangeVisible(visible => this.didChangeVisibility(visible)),
 		);
 
 		this.panel.show();
@@ -76,17 +82,19 @@ module.exports = class InputView {
 		}
 	}
 
-	async update(props = {}) {
-		this.props = { ...this.props, ...props };
-
-		await etch.update(this);
+	didChangeValue() {
+		this.props.value = this.editor.getText();
 	}
 
-	updateText() {
-		if (this.props.value) {
-			this.editor.setText(this.props.value);
-			delete this.props.value;
-		}
+	update(props = {}) {
+		this.props = { ...this.props, ...props };
+
+		this.renderPromise = etch.update(this).then(() => {
+			if ("value" in props) {
+				this.editor.setText(props.value);
+			}
+		});
+		return this.renderPromise;
 	}
 
 	render() {
@@ -122,8 +130,9 @@ module.exports = class InputView {
 	}
 
 	async confirm() {
-		const gistId = this.editor.getText();
-		this.resolve(gistId);
+		this.didChangeValue();
+		const value = this.props.value;
+		this.resolve(value);
 		await this.destroy();
 	}
 };

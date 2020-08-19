@@ -33,7 +33,7 @@ describe("InputView", () => {
 
 	it("description", () => {
 		const view = new InputView({ description: "description" });
-		expect(view.element.querySelector(".input-view-description").innerHTML).toBe("description");
+		expect(view.element.querySelector(".input-view-description").innerHTML).toBe("<p>description</p>");
 		view.resolve();
 	});
 
