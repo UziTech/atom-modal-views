@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/UziTech/atom-modal-views/compare/v1.0.2...v1.0.3) (2020-09-28)
+
+
+### Bug Fixes
+
+* **deps:** bump marked from 1.1.1 to 1.2.0 ([#18](https://github.com/UziTech/atom-modal-views/issues/18)) ([b0d5633](https://github.com/UziTech/atom-modal-views/commit/b0d56338f05c1dfeec0a50cf03623543c2732ae4))
+
 ## [1.0.2](https://github.com/UziTech/atom-modal-views/compare/v1.0.1...v1.0.2) (2020-09-24)
 
 
