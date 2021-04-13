@@ -24,6 +24,8 @@ const inputView = new InputView({
 const value = await inputView.getInput();
 ```
 
+![image](https://user-images.githubusercontent.com/97994/114631440-32fc2900-9c82-11eb-92c1-15943fe882cc.png)
+
 ### Options
 
 | Name        | Default | Description                                  |
