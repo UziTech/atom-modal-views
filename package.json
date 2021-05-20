@@ -25,7 +25,7 @@
   "homepage": "https://github.com/UziTech/atom-modal-views#readme",
   "dependencies": {
     "etch": "^0.14.1",
-    "marked": "^2.0.3"
+    "marked": "^2.0.4"
   },
   "devDependencies": {
     "@semantic-release/changelog": "^5.0.1",
