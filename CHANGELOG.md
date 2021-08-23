@@ -1,3 +1,10 @@
+## [1.0.16](https://github.com/UziTech/atom-modal-views/compare/v1.0.15...v1.0.16) (2021-08-23)
+
+
+### Bug Fixes
+
+* **deps:** update dependency marked to ^3.0.1 ([23b4b98](https://github.com/UziTech/atom-modal-views/commit/23b4b98fb76cd2030b59c0d1df299278e9dbb576))
+
 ## [1.0.15](https://github.com/UziTech/atom-modal-views/compare/v1.0.14...v1.0.15) (2021-08-16)
 
 
