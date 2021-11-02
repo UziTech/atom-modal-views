@@ -2,7 +2,7 @@
 /** @jsx etch.dom */
 
 const { CompositeDisposable, TextEditor } = require("atom");
-const { marked } = require("marked");
+const { marked } = require("marked/lib/marked.cjs");
 const etch = require("etch");
 
 let oldView;
