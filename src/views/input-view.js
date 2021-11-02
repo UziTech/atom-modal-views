@@ -2,7 +2,7 @@
 /** @jsx etch.dom */
 
 const { CompositeDisposable, TextEditor } = require("atom");
-const marked = require("marked");
+const { marked } = require("marked");
 const etch = require("etch");
 
 let oldView;
@@ -16,7 +16,7 @@ function markedCache(md) {
 	}
 
 	if (!this.cache[md]) {
-		this.cache[md] = marked(md).trim();
+		this.cache[md] = marked.parse(md).trim();
 	}
 
 	return this.cache[md];
