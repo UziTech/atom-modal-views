@@ -1,3 +1,10 @@
+## [1.0.27](https://github.com/UziTech/atom-modal-views/compare/v1.0.26...v1.0.27) (2022-03-12)
+
+
+### Bug Fixes
+
+* fix marked import for Atom 1.61 ([d7dac17](https://github.com/UziTech/atom-modal-views/commit/d7dac170a39cee0a2c579ed114969eb481481a56))
+
 ## [1.0.26](https://github.com/UziTech/atom-modal-views/compare/v1.0.25...v1.0.26) (2022-01-27)
 
 
